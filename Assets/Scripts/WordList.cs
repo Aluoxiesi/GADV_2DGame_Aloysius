@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ public class WordList : MonoBehaviour
         {
             if (word == correct)
             {
-                Debug.Log("Correct!" + word);
+                Debug.Log($"(Correct!) The word is {word}");
                 word = "";
                 return;
             }
