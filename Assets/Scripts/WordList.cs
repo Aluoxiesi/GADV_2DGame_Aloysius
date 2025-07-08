@@ -25,7 +25,7 @@ public class WordList : MonoBehaviour
            
            
         }
-        Debug.Log("Wrong" + word);
+        Debug.Log($"Wrong! {word}");
         word = "";
     }
     // Update is called once per frame
