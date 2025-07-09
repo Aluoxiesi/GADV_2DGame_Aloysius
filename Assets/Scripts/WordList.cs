@@ -5,8 +5,15 @@ using UnityEngine;
 public class WordList : MonoBehaviour
 {
     public string word = "";
-    public List<string> correctwords = new List<string>{"LION"};
+    private List<string> correctwords = new List<string>{"LION"};
+    public static WordList instance;
     // Start is called before the first frame update
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         

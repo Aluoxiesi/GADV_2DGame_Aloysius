@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LetterPick : MonoBehaviour
 {
-    private char letter = 'L';
+    public char letter = 'L';
     
     // Start is called before the first frame update
 
@@ -12,8 +12,11 @@ public class LetterPick : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Destroy(gameObject);
+            
             Debug.Log("Collected: " + letter);
+            WordList.instance.word += letter;
+            Destroy(gameObject);
+            
         }
     }
     void Start()
