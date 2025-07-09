@@ -5,7 +5,7 @@ using UnityEngine;
 public class WordList : MonoBehaviour
 {
     public string word = "";
-    public List<string> correctwords = new List<string>{"lion"};
+    public List<string> correctwords = new List<string>{"LION"};
     // Start is called before the first frame update
     void Start()
     {
