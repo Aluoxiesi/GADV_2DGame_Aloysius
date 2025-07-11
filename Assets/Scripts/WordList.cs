@@ -39,7 +39,7 @@ public class WordList : MonoBehaviour
     IEnumerator Hint()
     {
         Debug.Log($"Wrong! {word}");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         Debug.Log("Hint: The word ends in the letter N");
         
     }
