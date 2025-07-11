@@ -46,7 +46,7 @@ public class WordList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (word.Length == 4)
         {
             Check();
         }
