@@ -32,8 +32,16 @@ public class WordList : MonoBehaviour
            
            
         }
-        Debug.Log($"Wrong! {word}");
+        StartCoroutine(Hint());
         word = "";
+    }
+
+    IEnumerator Hint()
+    {
+        Debug.Log($"Wrong! {word}");
+        yield return new WaitForSeconds(2f);
+        Debug.Log("Hint: The word ends in the letter N");
+        
     }
     // Update is called once per frame
     void Update()
