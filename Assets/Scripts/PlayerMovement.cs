@@ -7,10 +7,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     private float speed = 30f;
+    private Animator anim;
+   
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim =  GetComponent<Animator>();
         
     }
 
@@ -20,10 +23,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             movement = Vector2.left;
+            transform.localScale = new Vector3(-2.211424f, 2.211424f, 2.211424f);
+            anim.SetBool("Walk", true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             movement = Vector2.right;
+            transform.localScale = new Vector3(2.211424f, 2.211424f, 2.211424f);
+            anim.SetBool("Walk", true);
+            
         }
         else if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -35,7 +43,10 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             movement = Vector2.zero;
+            anim.SetBool("Walk", false);
         }
+        
+        
     }
 
     private void FixedUpdate()
