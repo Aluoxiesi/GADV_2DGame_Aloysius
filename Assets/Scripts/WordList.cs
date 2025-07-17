@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WordList : MonoBehaviour
 {
@@ -41,7 +42,9 @@ public class WordList : MonoBehaviour
         Debug.Log($"Wrong! {word}");
         yield return new WaitForSeconds(1f);
         Debug.Log("Hint: The word ends in the letter N");
-        
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
     // Update is called once per frame
     void Update()
