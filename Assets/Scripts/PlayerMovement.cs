@@ -36,9 +36,12 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey(KeyCode.UpArrow))
         {
             movement = Vector2.up;
-        }else if (Input.GetKey(KeyCode.DownArrow))
+            anim.SetBool("Walk", true);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             movement = Vector2.down;
+            anim.SetBool("Walk", true);
         }
         else
         {

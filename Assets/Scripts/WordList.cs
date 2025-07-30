@@ -42,7 +42,7 @@ public class WordList : MonoBehaviour
         Debug.Log($"Wrong! {word}");
         yield return new WaitForSeconds(1f);
         Debug.Log("Hint: The word ends in the letter N");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
