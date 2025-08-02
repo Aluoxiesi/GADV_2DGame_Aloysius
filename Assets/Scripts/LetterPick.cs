@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class LetterPick : MonoBehaviour
 {
     public char letter = 'L';
+    public TextMeshProUGUI PickLetter;
     
     // Start is called before the first frame update
 
@@ -15,8 +18,10 @@ public class LetterPick : MonoBehaviour
             
             Debug.Log("Collected: " + letter);
             WordList.instance.word += letter;
-            Destroy(gameObject);
             
+            Destroy(gameObject);
+            PickLetter.text = $"Picked up {letter}";
+
         }
     }
     void Start()
