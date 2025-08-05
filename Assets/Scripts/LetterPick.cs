@@ -20,7 +20,12 @@ public class LetterPick : MonoBehaviour
             WordList.instance.word += letter;
             
             Destroy(gameObject);
-            PickLetter.text = $"Picked up {letter}";
+            if (PickLetter != null)
+            {
+                PickLetter.gameObject.SetActive(true);
+                PickLetter.text = $"Picked up {letter}";
+            }
+            
 
         }
     }

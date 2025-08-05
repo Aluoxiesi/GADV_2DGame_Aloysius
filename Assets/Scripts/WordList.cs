@@ -11,7 +11,7 @@ public class WordList : MonoBehaviour
     private List<string> correctwords = new List<string>{"LION"};
     public static WordList instance;
     public TextMeshProUGUI DisplayWords;
-    public float WordLength;
+    public float WordLength = 4;
     
     // Start is called before the first frame update
 
@@ -22,7 +22,7 @@ public class WordList : MonoBehaviour
     }
     void Start()
     {
-        WordLength = word.Length;
+       
     }
 
     void Check()
@@ -58,7 +58,7 @@ public class WordList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (WordLength == 4)
+        if (word.Length == WordLength)
         {
             Check();
         }
