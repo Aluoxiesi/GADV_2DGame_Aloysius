@@ -18,27 +18,17 @@ public class LetterPick : MonoBehaviour
             
             Debug.Log("Collected: " + letter);
             WordList.instance.word += letter;
-            if (PickLetter != null)
-            {
-                PickLetter.gameObject.SetActive(true);
-                PickLetter.text = $"Picked up {letter}";
-                StartCoroutine(HideText());
-            }
+            WordList.instance.UpdatedDisplayword();
 
-
+            
+            Destroy(gameObject);
+            
         }
         
     }
 
-    IEnumerator HideText()
-    {
-        Debug.Log("Starting Couritne");
-        yield return new WaitForSeconds(0.5f);
-        PickLetter.gameObject.SetActive(false);
-        Debug.Log("Hiding the text now");
-        Destroy(gameObject);
 
-    }
+    
     void Start()
     {
         

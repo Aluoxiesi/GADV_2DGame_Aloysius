@@ -55,7 +55,22 @@ public class WordList : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
-    // Update is called once per frame
+
+    public void UpdatedDisplayword()
+    {
+        string display = "";
+
+        for (int i = 0; i < WordLength; i++)
+        {
+            if (i < word.Length)
+                display += word[i] + "";
+            else
+                display += "_ ";
+        }
+
+        DisplayWords.text = display;
+    }
+   
     void Update()
     {
         if (word.Length == WordLength)
