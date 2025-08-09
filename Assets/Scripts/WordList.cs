@@ -12,7 +12,8 @@ public class WordList : MonoBehaviour
     public static WordList instance;
     public TextMeshProUGUI DisplayWords;
     public float WordLength = 4;
-    
+    public TextMeshProUGUI WordHint;
+    public TextMeshProUGUI Restart;
     // Start is called before the first frame update
 
 
@@ -51,7 +52,12 @@ public class WordList : MonoBehaviour
         DisplayWords.text = word;
         yield return new WaitForSeconds(1f);
         Debug.Log("Hint: The word ends in the letter N");
+        if(WordHint != null)
+        {
+            WordHint.gameObject.SetActive(true);
+        }
         yield return new WaitForSeconds(0.5f);
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
