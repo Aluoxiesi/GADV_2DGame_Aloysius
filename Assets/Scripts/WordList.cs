@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WordList : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class WordList : MonoBehaviour
     public TextMeshProUGUI DisplayWords;
     public float WordLength = 4;
     public TextMeshProUGUI WordHint;
-    public TextMeshProUGUI Restart;
+    public Button Restart;
     // Start is called before the first frame update
 
 
@@ -57,8 +58,12 @@ public class WordList : MonoBehaviour
             WordHint.gameObject.SetActive(true);
         }
         yield return new WaitForSeconds(0.5f);
+        if (Restart != null)
+        {
+            Restart.gameObject.SetActive(true);
+        }
+
         
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
 
