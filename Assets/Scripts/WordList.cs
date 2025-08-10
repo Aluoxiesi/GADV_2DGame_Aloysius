@@ -15,8 +15,8 @@ public class WordList : MonoBehaviour
     public float WordLength = 4;
     public TextMeshProUGUI WordHint;
     public Button Restart;
-    public AudioSource picked;
-
+    [SerializeField] private AudioClip pickup;
+    private AudioSource pick;
     // Start is called before the first frame update
 
 
@@ -26,7 +26,7 @@ public class WordList : MonoBehaviour
     }
     void Start()
     {
-        picked = GetComponent<AudioSource>();
+        pick = GetComponent<AudioSource>();
     }
 
     void Check()
@@ -71,7 +71,8 @@ public class WordList : MonoBehaviour
 
     public void PickUpSound()
     {
-        picked.Play();
+        pick.clip = pickup;
+        pick.Play();
     }
 
     public void UpdatedDisplayword()
