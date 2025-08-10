@@ -8,9 +8,14 @@ public class LetterPick : MonoBehaviour
 {
     public char letter = 'L';
     public TextMeshProUGUI PickLetter;
-    
+    public AudioSource pick;
     // Start is called before the first frame update
 
+
+    void Start()
+    {
+        pick = GetComponent<AudioSource>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
@@ -19,8 +24,10 @@ public class LetterPick : MonoBehaviour
             Debug.Log("Collected: " + letter);
             WordList.instance.word += letter;
             WordList.instance.UpdatedDisplayword();
+            Debug.Log("Audio should play");
+            pick.Play();
 
-            
+
             Destroy(gameObject);
             
         }
@@ -29,10 +36,7 @@ public class LetterPick : MonoBehaviour
 
 
     
-    void Start()
-    {
-        
-    }
+   
 
     // Update is called once per frame
     void Update()
