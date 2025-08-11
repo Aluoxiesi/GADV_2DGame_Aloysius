@@ -23,13 +23,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             movement = Vector2.left;
-            transform.localScale = new Vector3(-2.211424f, 2.211424f, 2.211424f);
+            transform.localScale = new Vector3(-1.632849f, 1.632849f, 1.632849f);
             anim.SetBool("Walk", true);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             movement = Vector2.right;
-            transform.localScale = new Vector3(2.211424f, 2.211424f, 2.211424f);
+            transform.localScale = new Vector3(1.632849f, 1.632849f, 1.632849f);
             anim.SetBool("Walk", true);
             
         }

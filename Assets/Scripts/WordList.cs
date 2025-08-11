@@ -17,6 +17,9 @@ public class WordList : MonoBehaviour
     public Button Restart;
     [SerializeField] private AudioClip pickup;
     private AudioSource pick;
+    [SerializeField] private AudioClip HintSound;
+    private AudioSource Hsound;
+   
     // Start is called before the first frame update
 
 
@@ -27,6 +30,7 @@ public class WordList : MonoBehaviour
     void Start()
     {
         pick = GetComponent<AudioSource>();
+        Hsound = GetComponent<AudioSource>();
     }
 
     void Check()
@@ -58,6 +62,7 @@ public class WordList : MonoBehaviour
         if(WordHint != null)
         {
             WordHint.gameObject.SetActive(true);
+            HintNotification();
         }
         yield return new WaitForSeconds(0.5f);
         if (Restart != null)
@@ -67,6 +72,12 @@ public class WordList : MonoBehaviour
 
         
 
+    }
+
+    public void HintNotification()
+    {
+        Hsound.clip = HintSound;
+        Hsound.Play();
     }
 
     public void PickUpSound()
