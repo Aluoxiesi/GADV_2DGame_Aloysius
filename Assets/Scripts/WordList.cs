@@ -9,17 +9,18 @@ using UnityEngine.UI;
 public class WordList : MonoBehaviour
 {
     public string word = "";
-    private List<string> correctwords = new List<string>{"LION"};
+    private List<string> correctwords = new List<string> { "LION" };
     public static WordList instance;
     public TextMeshProUGUI DisplayWords;
-    public float WordLength = 4;
+    public float WordLength;
     public TextMeshProUGUI WordHint;
     public Button Restart;
     [SerializeField] private AudioClip pickup;
     private AudioSource pick;
     [SerializeField] private AudioClip HintSound;
     private AudioSource Hsound;
-   
+    public int Attempts = 0;
+
     // Start is called before the first frame update
 
 
@@ -41,13 +42,13 @@ public class WordList : MonoBehaviour
             {
                 Debug.Log($"(Correct!) The word is {word}");
                 DisplayWords.text = word;
-                
+
                 word = "";
                 SceneManager.LoadScene("Complete screen");
                 return;
             }
-           
-           
+
+
         }
         StartCoroutine(Hint());
         word = "";
@@ -59,21 +60,28 @@ public class WordList : MonoBehaviour
         DisplayWords.text = word;
         yield return new WaitForSeconds(1f);
         Debug.Log("Hint: The word ends in the letter N");
-        if(WordHint != null)
+        Attempts += 1;
+        if (Attempts == 2)
         {
-            WordHint.gameObject.SetActive(true);
-            HintNotification();
-        }
-        yield return new WaitForSeconds(0.5f);
-        if (Restart != null)
-        {
-            Restart.gameObject.SetActive(true);
+            if (WordHint != null)
+            {
+                WordHint.gameObject.SetActive(true);
+                HintNotification();
+                yield return new WaitForSeconds(2f);
+                WordHint.gameObject.SetActive(false);
+            }
+            Attempts = 0;
         }
 
-        
+        yield return new WaitForSeconds(0.5f);
+        Spawn.instance.SpawnLetters();
+
+
 
     }
 
+
+   
     public void HintNotification()
     {
         Hsound.clip = HintSound;
