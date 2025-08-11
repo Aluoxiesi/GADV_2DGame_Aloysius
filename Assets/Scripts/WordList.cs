@@ -58,8 +58,9 @@ public class WordList : MonoBehaviour
     {
         Debug.Log($"Wrong! {word}");
         DisplayWords.text = word;
-        yield return new WaitForSeconds(1f);
-        Debug.Log("Hint: The word ends in the letter N");
+        Wrong.instance.Wronganswer();
+
+        
         Attempts += 1;
         if (Attempts == 2)
         {
@@ -81,7 +82,6 @@ public class WordList : MonoBehaviour
     }
 
 
-   
     public void HintNotification()
     {
         Hsound.clip = HintSound;
