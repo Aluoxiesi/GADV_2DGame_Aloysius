@@ -20,6 +20,8 @@ public class WordList : MonoBehaviour
     [SerializeField] private AudioClip HintSound;
     private AudioSource Hsound;
     public int Attempts = 0;
+    
+
 
     // Start is called before the first frame update
 
@@ -43,6 +45,7 @@ public class WordList : MonoBehaviour
                 Debug.Log($"(Correct!) The word is {word}");
                 DisplayWords.text = word;
 
+                
                 word = "";
                 SceneManager.LoadScene("Complete screen");
                 return;
@@ -50,15 +53,18 @@ public class WordList : MonoBehaviour
 
 
         }
+        Debug.Log($"Wrong! {word}");
+        DisplayWords.text = word;
+        Wrong.instance.Wronganswer();
+
         StartCoroutine(Hint());
         word = "";
+        ResetPos.instance.ResetPosition();
     }
 
     IEnumerator Hint()
     {
-        Debug.Log($"Wrong! {word}");
-        DisplayWords.text = word;
-        Wrong.instance.Wronganswer();
+        
 
         
         Attempts += 1;
@@ -81,6 +87,10 @@ public class WordList : MonoBehaviour
 
     }
 
+    public void Placement()
+    {
+
+    }
 
     public void HintNotification()
     {
