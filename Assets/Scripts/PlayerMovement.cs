@@ -20,25 +20,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             movement = Vector2.left;
             transform.localScale = new Vector3(-1.632849f, 1.632849f, 1.632849f);
             anim.SetBool("Walk", true);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D))
         {
             movement = Vector2.right;
             transform.localScale = new Vector3(1.632849f, 1.632849f, 1.632849f);
             anim.SetBool("Walk", true);
             
         }
-        else if (Input.GetKey(KeyCode.UpArrow))
+        else if (Input.GetKey(KeyCode.W))
         {
             movement = Vector2.up;
             anim.SetBool("Walk", true);
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.S))
         {
             movement = Vector2.down;
             anim.SetBool("Walk", true);

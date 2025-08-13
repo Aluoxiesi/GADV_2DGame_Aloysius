@@ -8,7 +8,31 @@ public class AnimalManager : MonoBehaviour
     public List<string> rescuedAnimals = new List<string>();
     // Start is called before the first frame update
 
-   
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void Animaladd(string animalName)
+    {
+        if (!rescuedAnimals.Contains(animalName))
+        {
+            rescuedAnimals.Add(animalName);
+        }
+    }
+
+    public List<string> AnimalsRescued()
+    {
+        return rescuedAnimals;
+    }
     void Start()
     {
         

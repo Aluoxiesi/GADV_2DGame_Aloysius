@@ -20,7 +20,9 @@ public class WordList : MonoBehaviour
     [SerializeField] private AudioClip HintSound;
     private AudioSource Hsound;
     public int Attempts = 0;
-    
+    [SerializeField] private AudioClip wrongSound;
+    private AudioSource wSound;
+
 
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class WordList : MonoBehaviour
     {
         pick = GetComponent<AudioSource>();
         Hsound = GetComponent<AudioSource>();
+        wSound = GetComponent<AudioSource>();
     }
 
     void Check()
@@ -45,7 +48,7 @@ public class WordList : MonoBehaviour
                 Debug.Log($"(Correct!) The word is {word}");
                 DisplayWords.text = word;
 
-                
+                AnimalManager.Instance.Animaladd(word);
                 word = "";
                 SceneManager.LoadScene("Complete screen");
                 return;
@@ -56,6 +59,7 @@ public class WordList : MonoBehaviour
         Debug.Log($"Wrong! {word}");
         DisplayWords.text = word;
         Wrong.instance.Wronganswer();
+        WrongAnswerSound();
 
         StartCoroutine(Hint());
         word = "";
@@ -102,6 +106,12 @@ public class WordList : MonoBehaviour
     {
         pick.clip = pickup;
         pick.Play();
+    }
+
+    public void WrongAnswerSound()
+    {
+        wSound.clip = wrongSound;
+        wSound.Play();
     }
 
     public void UpdatedDisplayword()
