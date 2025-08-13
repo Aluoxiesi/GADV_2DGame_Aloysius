@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class WordList : MonoBehaviour
 {
     public string word = "";
-    private List<string> correctwords = new List<string> { "LION" };
+    private List<string> correctwords = new List<string> { "LION", "ZEBRA" };
     public static WordList instance;
     public TextMeshProUGUI DisplayWords;
     public float WordLength;

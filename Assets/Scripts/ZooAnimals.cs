@@ -8,7 +8,7 @@ public class ZooAnimals : MonoBehaviour
     [SerializeField] private Transform zooParent; // Where animals will be placed
     [SerializeField] private GameObject lionPrefab;
     [SerializeField] private GameObject zebraPrefab;
-    // Add more prefabs for each animal
+    
 
 
 

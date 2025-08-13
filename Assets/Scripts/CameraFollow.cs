@@ -10,13 +10,17 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private Transform animal;
     private Transform currentTarget;
+    [SerializeField] private AudioClip animalSound;
+    private AudioSource animalRoar;
 
     // Start is called before the first frame update
     void Start()
     {
+        animalRoar = GetComponent<AudioSource>();
         currentTarget = animal;
         offset = transform.position - target.position;
         transform.position = currentTarget.position + offset;
+        RoarSound();
     }
 
     // Update is called once per frame
@@ -25,6 +29,12 @@ public class CameraFollow : MonoBehaviour
         Vector3 targetPos = currentTarget.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
         StartCoroutine(Switch());
+    }
+
+    public void RoarSound()
+    {
+        animalRoar.clip = animalSound;
+        animalRoar.Play();
     }
 
     IEnumerator Switch()

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 19a60190dcdfbea4c9cdf34e749fbb03
+  - enabled: 1
+    path: Assets/Scenes/Zebra Level.unity
+    guid: a36243bf6c0f81647b9ec5c58e6c3f8e
   m_configObjects: {}
