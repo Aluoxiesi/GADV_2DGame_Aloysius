@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 30f;
     private Animator anim;
    
-    // Start is called before the first frame update
+   
+
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,15 +19,21 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
+
+    
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        //When A is pressed, the zookeeper moves left, and sprite will transform to the following scale(flip)
+        // and because the walk is set to true, the walk animation will play
+        if (Input.GetKey(KeyCode.A)) 
         {
             movement = Vector2.left;
             transform.localScale = new Vector3(-1.632849f, 1.632849f, 1.632849f);
-            anim.SetBool("Walk", true);
+            anim.SetBool("Walk", true); 
         }
+        //When D is pressed, the zookeeper moves left, and sprite will transform to the following scale(flip)
         else if (Input.GetKey(KeyCode.D))
         {
             movement = Vector2.right;
@@ -33,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Walk", true);
             
         }
+        //When W is pressed, the zookeeper moves up
         else if (Input.GetKey(KeyCode.W))
         {
             movement = Vector2.up;

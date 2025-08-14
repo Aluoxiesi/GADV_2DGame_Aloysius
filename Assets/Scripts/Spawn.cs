@@ -34,7 +34,7 @@ public class Spawn : MonoBehaviour
 
        
     }
-    // Start is called before the first frame update
+  
     void Start()
     {
         instance = this;
@@ -42,9 +42,5 @@ public class Spawn : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

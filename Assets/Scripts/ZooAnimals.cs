@@ -24,7 +24,7 @@ public class ZooAnimals : MonoBehaviour
             {
                 case "LION": animalPrefab = lionPrefab; break;
                 case "ZEBRA": animalPrefab = zebraPrefab; break;
-                    // Add more cases here
+                    
             }
 
             if (animalPrefab != null)

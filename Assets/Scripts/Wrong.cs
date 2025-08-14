@@ -9,12 +9,13 @@ public class Wrong : MonoBehaviour
 {
     public TextMeshProUGUI incorrect;
     public static Wrong instance;
-    // Start is called before the first frame update
+    
     void Start()
     {
         instance = this;
     }
 
+    //Makes the hidden "WRONG" text show up after the SetActive becomes true
     public void Wronganswer()
     {
         if (incorrect != null)
@@ -26,6 +27,7 @@ public class Wrong : MonoBehaviour
     }
 
 
+    //Hides the gameobject/text of the "WRONG" popup because of the false SetActive
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(2f);
