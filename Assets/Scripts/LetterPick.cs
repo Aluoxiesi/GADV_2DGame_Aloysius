@@ -6,18 +6,17 @@ using UnityEngine;
 
 public class LetterPick : MonoBehaviour
 {
-    public char letter = 'L';
+    public char letter = ' '; //The letter represents whatever the zookeeper picks up, changeable in the inspector
     public TextMeshProUGUI PickLetter;
     
-    // Start is called before the first frame update
-
-
-    void Start()
-    {
-
-    }
+  
+    
     void OnTriggerEnter2D(Collider2D other)
     {
+
+        //When the zookeeper with the "Player" tag collides with the letter object, the letter is collected,
+        //and added to the "word" in WordList. The UI gets updated, and a sound effect gets played.
+        //Then, the letter is destroyed, so it can't be picked up again.
         if(other.tag == "Player")
         {
             
@@ -31,16 +30,6 @@ public class LetterPick : MonoBehaviour
             Destroy(gameObject);
             
         }
-        
-    }
-
-
-    
-   
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
 }

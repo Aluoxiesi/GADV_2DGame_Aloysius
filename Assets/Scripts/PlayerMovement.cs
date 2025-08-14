@@ -9,9 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 30f;
     private Animator anim;
    
-   
-
-    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,9 +16,9 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    
 
     
+    //https:// www.youtube.com/watch?v=fyaJQpBRk2U
 
     void Update()
     {
@@ -47,12 +44,14 @@ public class PlayerMovement : MonoBehaviour
             movement = Vector2.up;
             anim.SetBool("Walk", true);
         }
+        //When W is pressed, the zookeeper moves down
         else if (Input.GetKey(KeyCode.S))
         {
             movement = Vector2.down;
             anim.SetBool("Walk", true);
         }
         else
+        //If there is no movement, then the walk is set to false, causing the walk animation to stop
         {
             movement = Vector2.zero;
             anim.SetBool("Walk", false);

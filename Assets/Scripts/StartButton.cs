@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class StartButton : MonoBehaviour
 {
-    // Start is called before the first frame update
     
-
+    
+    //When the start button is pressed,
+    //Loads the first level of the game using Unity's scenemanager.
     public void StartGame()
     {
         SceneManager.LoadScene("Lion Level");
     }
-    // Update is called once per frame
+    
     
 }

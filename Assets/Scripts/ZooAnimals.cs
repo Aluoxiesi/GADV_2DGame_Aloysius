@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ZooAnimals : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     [SerializeField] private Transform zooParent; // Where animals will be placed
     [SerializeField] private GameObject lionPrefab;
     [SerializeField] private GameObject zebraPrefab;

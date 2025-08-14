@@ -15,7 +15,9 @@ public class Wrong : MonoBehaviour
         instance = this;
     }
 
-    //Makes the hidden "WRONG" text show up after the SetActive becomes true
+    //Checks if the UI has a textmeshpro
+    //Sets the hidden text to visible with (SetActive(true))
+    //Starts coroutine to hid the text after a delay
     public void Wronganswer()
     {
         if (incorrect != null)
@@ -27,16 +29,13 @@ public class Wrong : MonoBehaviour
     }
 
 
-    //Hides the gameobject/text of the "WRONG" popup because of the false SetActive
+    //Waits 2 seconds
+    //Sets the text inactive again, hiding the text
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(2f);
         incorrect.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

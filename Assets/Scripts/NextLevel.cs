@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //When the player rescues an animal, the count of rescued animals increases,
+    //so if only one animal is rescued, then it loads the next level(Zebra Level),
+    //but when 2 animals are rescued, it loads the "End" scene.
     public void NextLev()
     {
         int count = AnimalManager.Instance.rescuedAnimals.Count;
@@ -23,9 +25,4 @@ public class NextLevel : MonoBehaviour
 
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
