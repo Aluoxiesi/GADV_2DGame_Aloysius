@@ -12,7 +12,8 @@ public class CameraFollow : MonoBehaviour
     private Transform currentTarget;
     [SerializeField] private AudioClip animalSound;
     private AudioSource animalRoar;
-
+    public float minX, maxX;
+    public float minY, maxY;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +22,21 @@ public class CameraFollow : MonoBehaviour
         offset = transform.position - target.position;
         transform.position = currentTarget.position + offset;
         RoarSound();
+        StartCoroutine(Switch());
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 targetPos = currentTarget.position + offset;
+        if (currentTarget == target)
+        {
+            targetPos.x = Mathf.Clamp(targetPos.x, minX, maxX);
+            targetPos.y = Mathf.Clamp(targetPos.y, minY, maxY);
+        }
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
-        StartCoroutine(Switch());
+        
+        
     }
 
     public void RoarSound()
@@ -36,6 +44,8 @@ public class CameraFollow : MonoBehaviour
         animalRoar.clip = animalSound;
         animalRoar.Play();
     }
+
+    
 
     IEnumerator Switch()
     {

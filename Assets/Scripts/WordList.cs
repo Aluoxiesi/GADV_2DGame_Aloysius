@@ -1,27 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class WordList : MonoBehaviour
 {
     public string word = "";
-    private List<string> correctwords = new List<string> { "LION", "ZEBRA" };
-    public static WordList instance;
-    public TextMeshProUGUI DisplayWords;
-    public float WordLength;
+    private List<string> correctWords = new List<string> { "LION", "ZEBRA" }; //This makes a private list called "correctwords", which will contain the animals' names.
+    public static WordList instance; //Creates a static reference for this script
+    public float wordLength;
+
     public TextMeshProUGUI WordHint;
+    public TextMeshProUGUI displayWords;
     public Button Restart;
-    [SerializeField] private AudioClip pickup;
-    private AudioSource pick;
-    [SerializeField] private AudioClip HintSound;
-    private AudioSource Hsound;
+
     public int Attempts = 0;
+
+    [SerializeField] private AudioClip pickup;
+    [SerializeField] private AudioClip hintSound;
     [SerializeField] private AudioClip wrongSound;
-    private AudioSource wSound;
+    [SerializeField] private AudioClip levelComplete;
+    private AudioSource sounds;
 
 
 
@@ -34,50 +40,65 @@ public class WordList : MonoBehaviour
     }
     void Start()
     {
-        pick = GetComponent<AudioSource>();
-        Hsound = GetComponent<AudioSource>();
-        wSound = GetComponent<AudioSource>();
+        sounds = GetComponent<AudioSource>();
     }
 
-    void Check()
+
+
+
+    //This function checks the word the player formed against the words in the list(correctWords).
+    //If the word matches the word in the list, then the UI will be updated with that new word. 
+    //Then, it will add the animal word into a list of animals that were rescued.(In "Animal Manager" script)
+    //It resets the word, and runs CompleteLevel() coroutine, which plays a sound effect and loads the next scene.
+        void Check() 
     {
-        foreach (string correct in correctwords)
+        foreach (string correct in correctWords) 
         {
-            if (word == correct)
+            if (word == correct) 
             {
                 Debug.Log($"(Correct!) The word is {word}");
-                DisplayWords.text = word;
+                displayWords.text = word; 
 
-                AnimalManager.Instance.Animaladd(word);
-                word = "";
-                SceneManager.LoadScene("Complete screen");
+                AnimalManager.Instance.Animaladd(word); 
+                word = ""; 
+                StartCoroutine(CompleteLevel()); 
+              
                 return;
             }
-
-
         }
-        Debug.Log($"Wrong! {word}");
-        DisplayWords.text = word;
+       
+        //If the word does not match with the word in the list, then the UI will get updated to the wrong word, and a big wrong image(In the "Wrong" script) pops up on screen, playing the
+        //sound effect with it too. The Hint sequence happens, and the word is reset, with the ZooKeeper being sent back to its original position.
+        Debug.Log($"Wrong! {word}"); 
+        displayWords.text = word;
         Wrong.instance.Wronganswer();
-        WrongAnswerSound();
+        PlaySound(wrongSound);
+
 
         StartCoroutine(Hint());
         word = "";
         ResetPos.instance.ResetPosition();
     }
 
+
+
+    IEnumerator CompleteLevel()
+    {
+        PlaySound(levelComplete); 
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Complete screen");
+    }
+
+
     IEnumerator Hint()
     {
-        
-
-        
         Attempts += 1;
         if (Attempts == 2)
         {
             if (WordHint != null)
             {
                 WordHint.gameObject.SetActive(true);
-                HintNotification();
+                PlaySound(hintSound);
                 yield return new WaitForSeconds(2f);
                 WordHint.gameObject.SetActive(false);
             }
@@ -86,39 +107,23 @@ public class WordList : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         Spawn.instance.SpawnLetters();
-
-
-
     }
 
-    public void Placement()
+      public void PickUpSound()
     {
-
+        PlaySound(pickup);
     }
-
-    public void HintNotification()
+    private void PlaySound(AudioClip clip)
     {
-        Hsound.clip = HintSound;
-        Hsound.Play();
-    }
-
-    public void PickUpSound()
-    {
-        pick.clip = pickup;
-        pick.Play();
-    }
-
-    public void WrongAnswerSound()
-    {
-        wSound.clip = wrongSound;
-        wSound.Play();
+        if (clip != null && sounds != null)
+            sounds.PlayOneShot(clip);
     }
 
     public void UpdatedDisplayword()
     {
         string display = "";
 
-        for (int i = 0; i < WordLength; i++)
+        for (int i = 0; i < wordLength; i++)
         {
             if (i < word.Length)
                 display += word[i] + "";
@@ -126,12 +131,12 @@ public class WordList : MonoBehaviour
                 display += "_ ";
         }
 
-        DisplayWords.text = display;
+        displayWords.text = display;
     }
    
     void Update()
     {
-        if (word.Length == WordLength)
+        if (word.Length == wordLength)
         {
             Check();
         }
