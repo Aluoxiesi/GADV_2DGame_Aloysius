@@ -22,7 +22,7 @@ public class LetterPick : MonoBehaviour
             
             Debug.Log("Collected: " + letter);
             WordList.instance.word += letter; //Increments the letter into the "word"
-            WordList.instance.UpdatedDisplayword();
+            WordList.instance.UpdatedDisplayword(); //Updates the display with the letter picked up
             WordList.instance.PickUpSound();
 
 

@@ -65,7 +65,7 @@ public class WordList : MonoBehaviour
             if (word == correct) 
             {
                 Debug.Log($"(Correct!) The word is {word}");
-                displayWords.text = word; 
+                displayWords.text = word;  //Changes the display to the completed word
 
                 AnimalManager.Instance.AnimalAdd(word); 
                 word = ""; 
@@ -86,7 +86,7 @@ public class WordList : MonoBehaviour
         StartCoroutine(Hint());
         word = "";
         ResetPos.Instance.ResetPosition();
-        Spawn.Instance.SpawnLetters(); //
+        Spawn.Instance.SpawnLetters(); //Spawns the letters again
     }
 
 
@@ -125,10 +125,15 @@ public class WordList : MonoBehaviour
     }
     private void PlaySound(AudioClip clip)
     {
-        if (clip != null && sounds != null)
+        
             sounds.PlayOneShot(clip);
     }
 
+
+    //Updates the display word with the current word,
+    //it loops through each letter, until it hits the word length,
+    //then displays the letter in the position, when the letter is picked up
+    //The letters that have not been picked up will show "_" instead
     public void UpdatedDisplayword()
     {
         string display = "";
@@ -141,10 +146,11 @@ public class WordList : MonoBehaviour
                 display += "_ ";
         }
 
-        displayWords.text = display;
+        displayWords.text = display; //Put this into the display
     }
    
-    void Update()
+    //Checks continuosly to see if the word has reached the word length needed to run the Check() function.
+    void Update() 
     {
         if (word.Length == wordLength)
         {
