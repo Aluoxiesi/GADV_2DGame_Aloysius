@@ -386,7 +386,6 @@ MonoBehaviour:
   wordLength: 5
   WordHint: {fileID: 1611858692}
   displayWords: {fileID: 36131524}
-  Restart: {fileID: 309670928}
   Attempts: 0
   pickup: {fileID: 8300000, guid: ca978757898c3be42a27c694fe3d9d84, type: 3}
   hintSound: {fileID: 8300000, guid: c91c42acab5b0c441950fca4f9c09ba4, type: 3}
@@ -1679,7 +1678,7 @@ Transform:
   m_GameObject: {fileID: 1051843156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.93, y: -3.15, z: -13.713814}
+  m_LocalPosition: {x: -10.54, y: -3.41, z: -13.713814}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
