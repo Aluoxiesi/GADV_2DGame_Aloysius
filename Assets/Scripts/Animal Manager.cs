@@ -5,15 +5,15 @@ using UnityEngine;
 public class AnimalManager : MonoBehaviour
 {
     public static AnimalManager Instance;
-    public List<string> rescuedAnimals = new List<string>();
-    // Start is called before the first frame update
+    public List<string> rescuedAnimals = new List<string>(); //The names of the animals rescued
+    
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance == null) //Makes sure that only one AnimalManager exists, and if another one exists, it gets destroyed.
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); //Makes it so that the gameobject retains across scenes
         }
         else
         {
@@ -21,9 +21,9 @@ public class AnimalManager : MonoBehaviour
         }
     }
 
-    public void Animaladd(string animalName)
+    public void AnimalAdd(string animalName)  
     {
-        if (!rescuedAnimals.Contains(animalName))
+        if (!rescuedAnimals.Contains(animalName)) //If the animal name is NOT in the list, then it adds it
         {
             rescuedAnimals.Add(animalName);
         }
@@ -33,14 +33,5 @@ public class AnimalManager : MonoBehaviour
     {
         return rescuedAnimals;
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

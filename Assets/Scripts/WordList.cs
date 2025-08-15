@@ -17,16 +17,16 @@ public class WordList : MonoBehaviour
     public static WordList instance; //Creates a static reference for this script
     public float wordLength;
 
-    public TextMeshProUGUI WordHint;
+    public TextMeshProUGUI WordHint; 
     public TextMeshProUGUI displayWords;
-    public Button Restart;
+    
 
-    public int Attempts = 0;
+    public int Attempts = 0; //Tracks the attempts of the player
 
-    [SerializeField] private AudioClip pickup;
-    [SerializeField] private AudioClip hintSound;
-    [SerializeField] private AudioClip wrongSound;
-    [SerializeField] private AudioClip levelComplete;
+    [SerializeField] private AudioClip pickup; //Sound for picking up letters
+    [SerializeField] private AudioClip hintSound; //Sound of hint notification
+    [SerializeField] private AudioClip wrongSound; //Sound that plays when the player gets the word wrong
+    [SerializeField] private AudioClip levelComplete; //Sound of level completion
     private AudioSource sounds;
 
 
@@ -36,7 +36,15 @@ public class WordList : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
     void Start()
     {
@@ -59,7 +67,7 @@ public class WordList : MonoBehaviour
                 Debug.Log($"(Correct!) The word is {word}");
                 displayWords.text = word; 
 
-                AnimalManager.Instance.Animaladd(word); 
+                AnimalManager.Instance.AnimalAdd(word); 
                 word = ""; 
                 StartCoroutine(CompleteLevel()); 
               
@@ -71,17 +79,19 @@ public class WordList : MonoBehaviour
         //sound effect with it too. The Hint sequence happens, and the word is reset, with the ZooKeeper being sent back to its original position.
         Debug.Log($"Wrong! {word}"); 
         displayWords.text = word;
-        Wrong.instance.Wronganswer();
+        Wrong.Instance.Wronganswer();
         PlaySound(wrongSound);
 
 
         StartCoroutine(Hint());
         word = "";
-        ResetPos.instance.ResetPosition();
+        ResetPos.Instance.ResetPosition();
+        Spawn.Instance.SpawnLetters(); //
     }
 
 
-
+    //Coroutine that plays the comeplete level sound effect
+    //AFter 1 second, then it loads the "Complete Screen" level
     IEnumerator CompleteLevel()
     {
         PlaySound(levelComplete); 
@@ -89,24 +99,24 @@ public class WordList : MonoBehaviour
         SceneManager.LoadScene("Complete screen");
     }
 
-
+    //A coroutine that displays a hint after the player fails to build the correct word two times
     IEnumerator Hint()
     {
-        Attempts += 1;
+        Attempts += 1; //Increments the attempt by 1
         if (Attempts == 2)
         {
-            if (WordHint != null)
+            if (WordHint != null) //Sets the hidden object(Hint notification) to active, then sets it to inactive again after 2 seconds to hide it
             {
                 WordHint.gameObject.SetActive(true);
                 PlaySound(hintSound);
                 yield return new WaitForSeconds(2f);
                 WordHint.gameObject.SetActive(false);
             }
-            Attempts = 0;
+            Attempts = 0; //Resets the attempts back to 0
         }
 
         yield return new WaitForSeconds(0.5f);
-        Spawn.instance.SpawnLetters();
+        
     }
 
       public void PickUpSound()

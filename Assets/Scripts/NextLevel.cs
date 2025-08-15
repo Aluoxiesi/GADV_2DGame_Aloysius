@@ -8,7 +8,7 @@ public class NextLevel : MonoBehaviour
     //When the player rescues an animal, the count of rescued animals increases,
     //so if only one animal is rescued, then it loads the next level(Zebra Level),
     //but when 2 animals are rescued, it loads the "End" scene.
-    public void NextLev()
+    public void NextLevels()
     {
         int count = AnimalManager.Instance.rescuedAnimals.Count;
         if (count == 1)

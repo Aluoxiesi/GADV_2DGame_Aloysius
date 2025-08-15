@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public static Spawn instance;
+    public static Spawn Instance;
     public GameObject[] letterPrefabs; 
     public Transform[] spawnPoints;
 
@@ -36,18 +36,24 @@ public class Spawn : MonoBehaviour
             letters.RemoveAt(letterIndex);
             points.RemoveAt(pointIndex);
         }
-        
-
-       
-        
-
-       
     }
-  
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
-        instance = this;
-        SpawnLetters();
+        
+
+            SpawnLetters();
         
     }
 

@@ -8,11 +8,19 @@ using UnityEngine.UIElements;
 public class Wrong : MonoBehaviour
 {
     public TextMeshProUGUI incorrect;
-    public static Wrong instance;
+    public static Wrong Instance;
     
     void Start()
     {
-        instance = this;
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+       
     }
 
     //Checks if the UI has a textmeshpro

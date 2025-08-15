@@ -21,13 +21,13 @@ public class LetterPick : MonoBehaviour
         {
             
             Debug.Log("Collected: " + letter);
-            WordList.instance.word += letter;
+            WordList.instance.word += letter; //Increments the letter into the "word"
             WordList.instance.UpdatedDisplayword();
             WordList.instance.PickUpSound();
 
 
 
-            Destroy(gameObject);
+            Destroy(gameObject); 
             
         }
         

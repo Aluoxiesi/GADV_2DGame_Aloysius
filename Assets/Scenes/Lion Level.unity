@@ -686,7 +686,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: 81}
+  m_AnchoredPosition: {x: 7, y: 81}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345884154
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 799580960}
   - component: {fileID: 799580959}
   m_Layer: 0
-  m_Name: SPAWN
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,14 +1450,14 @@ RectTransform:
   m_GameObject: {fileID: 806703465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.76576746, y: 0.76576746, z: 0.76576746}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 345884153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: 0}
+  m_AnchoredPosition: {x: 22.4, y: 13.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806703467
@@ -1480,10 +1480,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WRONG
+  m_text: "\u1781\u17BB\u179F\nWrong"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 87ec00662f080c84e868657ddedfe13a, type: 2}
+  m_sharedMaterial: {fileID: -5311300997138163885, guid: 87ec00662f080c84e868657ddedfe13a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1706,14 +1706,14 @@ RectTransform:
   m_GameObject: {fileID: 881118701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.44, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 345884153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -16.699997, y: 5.299999}
+  m_AnchoredPosition: {x: -13.199997, y: -4.1000004}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881118703
@@ -1802,7 +1802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d0b8b64ef647c4d8f558278f9a48ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Zookeeper: {fileID: 1072495622}
+  zooKeeper: {fileID: 1072495622}
 --- !u!1 &1208591542
 GameObject:
   m_ObjectHideFlags: 0

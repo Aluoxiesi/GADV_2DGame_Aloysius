@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1.632849f, 1.632849f, 1.632849f);
             anim.SetBool("Walk", true); 
         }
-        //When D is pressed, the zookeeper moves left, and sprite will transform to the following scale(flip)
+        //When D is pressed, the zookeeper moves right, and sprite will transform to the following scale(flip)
         else if (Input.GetKey(KeyCode.D))
         {
             movement = Vector2.right;
@@ -62,10 +62,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (movement == Vector2.zero)
+        if (movement == Vector2.zero) 
         {
             return;
         }
-        rb.AddForce(movement * speed);
+        rb.AddForce(movement * speed); //Moves the player with the chosen speed
     }
 }

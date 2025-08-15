@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class ResetPos : MonoBehaviour
 {
-    public Transform Zookeeper;
+    public Transform zooKeeper;
     private Vector3 initialPosition;
-    public static ResetPos instance;
+    public static ResetPos Instance;
 
     // Creates a static instance so this script can be accessed from other scripts
     private void Awake()
     {
-        instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
     //Stores the first position of the zookeeper at the start of the game
     void Start()
     {
-        initialPosition = Zookeeper.position;
+        initialPosition = zooKeeper.position;
     }
 
 
     //Resets the position back to the first position that was stored at the start
     public void ResetPosition()
     {
-        Zookeeper.position = initialPosition;
+        zooKeeper.position = initialPosition;
 
     }
 }
